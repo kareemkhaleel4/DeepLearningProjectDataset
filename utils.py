@@ -205,14 +205,3 @@ def evaluate(model, test_loader):
     print("Confusion Matrix:\n", confusion_matrix(targets, preds))
 
     return accuracy
-
-
-def explain_with_shap(model, dataset, num_samples=3):
-    model.eval()
-    background = torch.cat([dataset[i][0].unsqueeze(0) for i in range(10)], dim=0).to(device)
-    explainer = shap.GradientExplainer(model, background)
-    test_images = torch.cat([dataset[i][0].unsqueeze(0) for i in range(num_samples)], dim=0).to(device)
-    shap_values = explainer.shap_values(test_images)
-
-    for i in range(num_samples):
-        shap.image_plot([shap_values[0][i]], test_images[i].cpu().numpy().transpose(1,2,0))

@@ -21,7 +21,6 @@ GENERAL_CLASSES = ['Fetal abdomen', 'Fetal brain', 'Fetal femur',
                    'Fetal thorax', 'Maternal cervix', 'Other']
 CLASS_TO_IDX = {cls: idx for idx, cls in enumerate(GENERAL_CLASSES)}
 
-# Dummy Data Loaders (Replace these with actual file paths)
 csv_path = 'FETAL_PLANES_DB_data.csv'
 image_dir = 'Images/'
 save_results_csv = 'res_data/hyperparameter_results.csv'
